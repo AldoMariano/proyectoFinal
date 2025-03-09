@@ -3,68 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BARTO</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .product-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .product { border: 1px solid #ddd; padding: 10px; width: 30%; text-align: center; }
-        .product img { width: 100%; height: auto; }
-        .comment { border: 1px solid #ddd; padding: 10px; margin: 10px 0; }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <title>BARTO STYLE</title>
+    
 </head>
 <body>
-    <div class="container">
-        <h2>Productos</h2>
-        <div class="product-list">
-            <div class='product'>
-                <img src="imagenes/playera.jpg" alt="Producto 1">
-                <p>playera Real Madrid</p>
-            </div>
-            <div class='product'>
-                <img src="imagenes/playeraPu.jpeg" alt="Producto 2">
-                <p>Playera Pumas</p>
-            </div>
-            <div class='product'>
-                <img src="imagenes/bolsa.png" alt="Producto 3">
-                <p>Bolsa</p>
-            </div>
-            <div class='product'>
-                <img src="imagenes/bolsa1.png" alt="Producto 4">
-                <p>Bolsa </p>
-            </div>
-            <div class='product'>
-                <img src="imagenes/bolsaP.png" alt="Producto 5">
-                <p>Bolsa Prada</p>
-            </div>
-            <div class='product'>
-                <img src="imagenes/cartera.png" alt="Producto 6">
-                <p>Cartera</p>
-            </div>
+    <header>
+        <div class="logo">
+            <img src="imagenes/Logo.png" alt="Logo" height="40">
         </div>
-        
-        <h2>Comentarios</h2>
-        <div class='comment'>Este producto es excelente.</div>
-        <div class='comment'>Me gustaría que tuviera más colores.</div>
-        <div class='comment'>Muy buen precio y calidad.</div>
-        
-        <h3>Agregar Comentario</h3>
-        <input type="text" id="comment-text" placeholder="Escribe un comentario">
-        <button onclick="addComment()">Comentar</button>
-    </div>
-    
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Mujer</a></li>
+                <li><a href="#">Hombre</a></li>
+                <li><a href="#">Niños</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Outlet</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="carousel">
+        <img src="imagenes/playera.jpg" class="active" alt="Banner 1">
+        <img src="imagenes/playera.jpg" alt="Banner 2">
+        <img src="imagenes/playeraPu.jpeg" alt="Banner 3">
+    </section>
+
+    <section class="products">
+        <div class="product">
+            <img src="imagenes/cartera.png" alt="Producto 1">
+            <p>Producto 1</p>
+        </div>
+        <div class="product">
+            <img src="imagenes/playera.jpg" alt="Producto 2">
+            <p>Producto 2</p>
+        </div>
+        <div class="product">
+            <img src="imagenes/playeraPu.jpeg" alt="Producto 3">
+            <p>Producto 3</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 BARSTO STYLE. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
-        function addComment() {
-            const text = document.getElementById('comment-text').value;
-            if (text) {
-                const list = document.querySelector('.container');
-                const newComment = document.createElement('div');
-                newComment.classList.add('comment');
-                newComment.textContent = text;
-                list.appendChild(newComment);
-                document.getElementById('comment-text').value = '';
-            }
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel img');
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
         }
+        setInterval(showNextImage, 3000);
     </script>
 </body>
 </html>
