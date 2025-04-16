@@ -1,7 +1,7 @@
 const products = [
-  { id: 1, name: "ropa", price: "$180", image: "https://via.placeholder.com/300" },
-  { id: 2, name: "aaaa", price: "$40", image: "https://via.placeholder.com/300" },
-  { id: 3, name: "Tenis", price: "$120", image: "https://via.placeholder.com/300" },
+  { id: 1, name: "Eco Botella", price: "$180", image: "https://via.placeholder.com/300" },
+  { id: 2, name: "Cepillo de bambú", price: "$40", image: "https://via.placeholder.com/300" },
+  { id: 3, name: "Shampoo sólido", price: "$120", image: "https://via.placeholder.com/300" },
 ];
 
 export default function ProductGrid() {
