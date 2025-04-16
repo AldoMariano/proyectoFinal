@@ -1,66 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <title>BARTO STYLE</title>
-    
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="imagenes/Logo.png" alt="Logo" height="40">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Mujer</a></li>
-                <li><a href="#">Hombre</a></li>
-                <li><a href="#">Niños</a></li>
-                <li><a href="#">Deportes</a></li>
-                <li><a href="#">Outlet</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="carousel">
-        <img src="imagenes/playera.jpg" class="active" alt="Banner 1">
-        <img src="imagenes/playera.jpg" alt="Banner 2">
-        <img src="imagenes/playeraPu.jpeg" alt="Banner 3">
-    </section>
-
-    <section class="products">
-        <div class="product">
-            <img src="imagenes/cartera.png" alt="Producto 1">
-            <p>Producto 1</p>
-        </div>
-        <div class="product">
-            <img src="imagenes/playera.jpg" alt="Producto 2">
-            <p>Producto 2</p>
-        </div>
-        <div class="product">
-            <img src="imagenes/playeraPu.jpeg" alt="Producto 3">
-            <p>Producto 3</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 BARSTO STYLE. Todos los derechos reservados.</p>
-    </footer>
-
-    <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel img');
-
-        function showNextImage() {
-            images[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
-        }
-        setInterval(showNextImage, 3000);
-    </script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BARTOSTYLEE</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
