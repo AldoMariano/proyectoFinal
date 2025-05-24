@@ -1,8 +1,9 @@
-import reactLogo from './assets/react.svg';
+import reactLogo from './assets/BartoStylee.png';
+
 var navigation = [{'title':"Home",'href':"/",'ComponentName':true},
     {'title':"About",'href':"/About",'ComponentName':false},
     {'title':"Services",'href':"/Services",'ComponentName':false},
-    {'title':"Team",'href':"/Team",'ComponentName':false},
+    {'title':"Team",'href':"/Team",'ComqponentName':false},
     {'title':"Contact",'href':"/Contact",'ComponentName':false}];
 function Nav (){
     return (
