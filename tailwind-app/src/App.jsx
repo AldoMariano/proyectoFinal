@@ -3,7 +3,6 @@ import Card from './Card';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from './About';
 import ContactUs from './ContactUs';
-import TeamSection from './TeamSection';
 import NotFound from './NotFound';
 import Nav from './Nav';
 import { useEffect, useState } from 'react';
@@ -12,7 +11,6 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CategoryPage from './CategoryPage';
-
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -87,7 +85,6 @@ function App() {
           path="/"
           element={
             <div className="text-center">
-              <h1 className="text-4xl font-bold mt-8">BARTOSTYLE</h1>
               <Carousel />
               <div className="flex flex-wrap justify-center gap-6 mt-10">
                 {products.map((product, index) => (
@@ -101,14 +98,15 @@ function App() {
         />
         <Route path="/Acerca De" element={<About />} />
         <Route path="/Contacto" element={<ContactUs />} />
-        <Route path="/Hombre" element={<TeamSection />} />
-        <Route path="/Mujer" element={<TeamSection />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/Hombre" element={<CategoryPage category="men's clothing" />} />
         <Route path="/Mujer" element={<CategoryPage category="women's clothing" />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+//<h1 className="text-4xl font-bold mt-8">BARTOSTYLE</h1>
+
