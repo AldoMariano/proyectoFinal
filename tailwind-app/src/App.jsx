@@ -13,25 +13,27 @@ import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const products = [
-    {
-      name: "Electronic Frozen Soap",
-      model: "978-1-894542-44-9",
-      hexColor: "#494719",
-      b64Image: "https://picsum.photos/seed/5htb27xeX/640/480",
-      properties: "Una camiseta cómoda para el uso diario. Hecha con algodón suave."
-    },
+
+  {
+    name: "Electronic Frozen Soap",
+    model: "978-1-894542-44-9",
+    hexColor: "#494719",
+    b64Image: "/assets/casualmujer.png",
+    properties: "Una camta cómoda para el uso diario. Hecha con algodón suave."
+  },
+
     {
       name: "Intelligent Soft Pants",
       model: "978-1-56619-909-4",
       hexColor: "#123456",
-      b64Image: "https://picsum.photos/seed/5hsagdxeX/640/480",
-      properties: "Pantalones casuales con ajuste moderno y bolsillos funcionales."
+      b64Image: "/assets/deportivamujer.png",
+      properties: "Pantalosdsadnes casuales con ajuste moderno y bolsillos funcionales."
     },
     {
       name: "Refined Cotton Shirt",
       model: "978-1-4028-9462-6",
       hexColor: "#abcdef",
-      b64Image: "https://picsum.photos/seed/5hfs23eX/640/480",
+      b64Image: "/assets/urbanamujer.png",
       properties: "Camisa formal ideal para la oficina o eventos sociales."
     },
     {
@@ -73,9 +75,8 @@ function App() {
 
   const carouselItems = [
     { type: 'image', src: '/assets/promo1.png' },
-    { type: 'image', src: '/assets/promo1.png' },
-    { type: 'image', src: '/assets/promo1.png' },
-    { type: 'video', src: '/assets/video.mp4' }
+    { type: 'image', src: '/assets/mujer1.png' },
+    { type: 'video', src: '/assets/video1.mp4' }
   ];
 
   const Carousel = () => {
@@ -123,11 +124,14 @@ function App() {
       <Routes>
         <Route path="/" element={
           <div className="text-center">
-            <h1 className="text-4xl font-bold mt-8">BARTOSTYLE</h1>
+            <h1 className="text-4xl font-bold mt-8"></h1>
             <Carousel />
             <div className="flex flex-wrap justify-center gap-6 mt-10">
               {products.map((product, index) => (
-                <Card key={index} product={product} />
+                // Aquí envuelvo cada Card en un div con la animación
+                <div key={index} className="rotate-center">
+                  <Card product={product} />
+                </div>
               ))}
             </div>
           </div>
