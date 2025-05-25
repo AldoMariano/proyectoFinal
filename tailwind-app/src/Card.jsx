@@ -4,10 +4,10 @@ function Card(props) {
   const { product } = props;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm w-72 h-96 flex flex-col overflow-hidden dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm w-72 h-96 flex flex-col overflow-hidden dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-transform duration-300 hover:scale-105">
       <a href="#">
         <img
-          className="w-full h-48 object-cover rounded-t-lg"
+          className="w-full h-48 object-contain rounded-t-lg bg-white"
           src={product.b64Image ? product.b64Image : imgDefault}
           alt={product.name}
         />
@@ -16,11 +16,11 @@ function Card(props) {
         <div>
           <a href="#">
             <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white truncate">
-              {product.name ? product.name : 'Title'}
+              {product.name}
             </h5>
           </a>
           <p className="text-sm text-gray-700 dark:text-gray-400 mt-2 overflow-hidden text-ellipsis line-clamp-3">
-            {product.properties ? product.properties : 'Body description'}
+            {product.properties}
           </p>
         </div>
         <a
