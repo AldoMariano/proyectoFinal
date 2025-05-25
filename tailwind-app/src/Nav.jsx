@@ -1,10 +1,13 @@
 import reactLogo from './assets/BartoStylee.png';
 
-var navigation = [{'title':"Home",'href':"/",'ComponentName':true},
-    {'title':"About",'href':"/About",'ComponentName':false},
-    {'title':"Services",'href':"/Services",'ComponentName':false},
-    {'title':"Team",'href':"/Team",'ComqponentName':false},
-    {'title':"Contact",'href':"/Contact",'ComponentName':false}];
+var navigation = [
+  { title: "Casa", href: "/", ComponentName: true },
+  { title: "Hombre", href: "/Hombre", ComponentName: false },
+  { title: "Mujer", href: "/Mujer", ComponentName: false },
+  { title: "Acerca De", href: "/Acerca De", ComponentName: false },
+  { title: "Contacto", href: "/Contacto", ComponentName: false }
+];
+
 function Nav (){
     return (
 
@@ -12,7 +15,7 @@ function Nav (){
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
         <img src={reactLogo} className="h-8" alt="Logo" />
-        <span className="self-center text-2xl whitespace-nowrap dark:text-white">Mi tiendita</span>
+        <span className="self-center text-2xl whitespace-nowrap dark:text-white">BartoStyle</span>
     </a>
     <button data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
         <span className="sr-only">Open main menu</span>
