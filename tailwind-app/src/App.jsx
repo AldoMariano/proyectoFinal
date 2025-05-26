@@ -7,15 +7,15 @@ import NotFound from './NotFound';
 import Nav from './Nav';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import CategoryPage from './CategoryPage';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CategoryPage from './CategoryPage';
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
-  // Cargar productos desde la API al iniciar
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -25,12 +25,17 @@ function App() {
           model: `ID-${product.id}`,
           hexColor: "#000000",
           b64Image: product.image,
-          properties: product.description
+          properties: product.description,
+          price: product.price
         }));
         setProducts(formattedProducts);
       })
       .catch(err => console.error("Error al cargar productos:", err));
   }, []);
+
+  const addToCart = (product) => {
+    setCartItems(prev => [...prev, product]);
+  };
 
   const carouselItems = [
     { type: 'image', src: '/assets/promo1.png' },
@@ -88,18 +93,38 @@ function App() {
               <Carousel />
               <div className="flex flex-wrap justify-center gap-6 mt-10">
                 {products.map((product, index) => (
-                  <div key={index} className="rotate-center">
-                    <Card product={product} />
-                  </div>
+                  <Card key={index} product={product} addToCart={addToCart} />
                 ))}
+              </div>
+
+              {/* Carrito debajo del catálogo */}
+              <div className="mt-10 bg-white p-4 max-w-xl mx-auto rounded-lg shadow-lg">
+                <h2 className="text-xl font-bold mb-4">Carrito de compras</h2>
+                {cartItems.length === 0 ? (
+                  <p className="text-gray-500">El carrito está vacío.</p>
+                ) : (
+                  <ul className="space-y-2">
+                    {cartItems.map((item, index) => (
+                      <li key={index} className="text-left">
+                        🛒 {item.name} - ${item.price.toFixed(2)} MXN
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             </div>
           }
         />
         <Route path="/Acerca De" element={<About />} />
         <Route path="/Contacto" element={<ContactUs />} />
-        <Route path="/Hombre" element={<CategoryPage category="men's clothing" />} />
-        <Route path="/Mujer" element={<CategoryPage category="women's clothing" />} />
+        <Route
+          path="/Hombre"
+          element={<CategoryPage category="men's clothing" addToCart={addToCart} />}
+        />
+        <Route
+          path="/Mujer"
+          element={<CategoryPage category="women's clothing" addToCart={addToCart} />}
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
@@ -107,6 +132,3 @@ function App() {
 }
 
 export default App;
-
-//<h1 className="text-4xl font-bold mt-8">BARTOSTYLE</h1>
-
