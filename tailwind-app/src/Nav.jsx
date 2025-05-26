@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import reactLogo from './assets/BartoStylee.png';
+import reactLogo from './assets/simp.gif';
 
 const navigation = [
   { title: "Casa", href: "/" },
