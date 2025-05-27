@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import CategoryPage from './CategoryPage';
 import CartPage from './CartPage';
 import Home from './Home';
-
+import Login from './Login';
 function App() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
@@ -54,7 +54,7 @@ function App() {
       path={`/${label}`}
       element={
         <CategoryPage
-          key={key} // ✅ Esto asegura que se reinicie el componente
+          key={key} 
           category={key}
           categoryLabel={label}
           addToCart={addToCart}
@@ -69,6 +69,7 @@ function App() {
       <Nav cartItemsCount={cartItems.length} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/Acerca De" element={<About />} />
         <Route path="/Contacto" element={<ContactUs />} />
         {categoryRoutes}
