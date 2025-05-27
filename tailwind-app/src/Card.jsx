@@ -9,38 +9,38 @@ function Card({ product, addToCart }) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-sm w-72 flex flex-col overflow-hidden dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-transform duration-300 hover:scale-105">
-      <a href="#">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-md w-72 flex flex-col overflow-hidden transition duration-300 hover:shadow-lg hover:-translate-y-1">
+      <div className="bg-white flex items-center justify-center h-48 overflow-hidden">
         <img
-          className="w-full h-48 object-contain rounded-t-lg bg-white"
+          className="object-contain max-h-full"
           src={product.b64Image ? product.b64Image : imgDefault}
           alt={product.name}
         />
-      </a>
+      </div>
+
       <div className="p-4 flex flex-col justify-between flex-grow">
         <div>
-          <a href="#">
-            <h5 className="text-lg font-bold tracking-tight text-gray-900 dark:text-white truncate">
-              {product.name}
-            </h5>
-          </a>
-          <p className="text-sm text-gray-700 dark:text-gray-400 mt-2 overflow-hidden text-ellipsis line-clamp-3">
+          <h5 className="text-lg font-semibold text-gray-800 truncate">
+            {product.name}
+          </h5>
+          <p className="text-sm text-gray-600 mt-1 h-12 overflow-hidden">
             {product.properties}
           </p>
-          <p className="text-base font-semibold text-green-600 dark:text-green-400 mt-2">
+          <p className="text-base font-bold text-green-600 mt-3">
             {formatPrice(product.price)}
           </p>
         </div>
+
         <div className="flex flex-col gap-2 mt-4">
           <a
             href="#"
-            className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="inline-block text-sm text-center text-white bg-blue-600 hover:bg-blue-700 rounded-md px-4 py-2 transition"
           >
             Ver producto
           </a>
           <button
             onClick={() => addToCart(product)}
-            className="inline-flex items-center justify-center px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+            className="inline-block text-sm text-center text-white bg-green-600 hover:bg-green-700 rounded-md px-4 py-2 transition"
           >
             Agregar al carrito
           </button>
