@@ -5,9 +5,11 @@ import About from './About';
 import ContactUs from './ContactUs';
 import NotFound from './NotFound';
 import Nav from './Nav';
+import Footer from './Footer';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import CategoryPage from './CategoryPage';
+import CartPage from './CartPage';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -16,17 +18,26 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
 
+  const categoryMapping = {
+    "men's clothing": "Hombre",
+    "women's clothing": "Mujer",
+    "electronics": "Electrónica",
+    "jewelery": "Joyería"
+  };
+
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(data => {
         const formattedProducts = data.map(product => ({
+          id: product.id,
           name: product.title,
           model: `ID-${product.id}`,
           hexColor: "#000000",
           b64Image: product.image,
           properties: product.description,
-          price: product.price
+          price: product.price,
+          category: product.category
         }));
         setProducts(formattedProducts);
       })
@@ -35,6 +46,10 @@ function App() {
 
   const addToCart = (product) => {
     setCartItems(prev => [...prev, product]);
+  };
+
+  const removeFromCart = (indexToRemove) => {
+    setCartItems(prev => prev.filter((_, index) => index !== indexToRemove));
   };
 
   const carouselItems = [
@@ -82,9 +97,24 @@ function App() {
     );
   };
 
+  const categoryRoutes = Object.entries(categoryMapping).map(([key, label]) => (
+    <Route
+      key={key}
+      path={`/${label}`}
+      element={
+        <CategoryPage
+          category={key}
+          categoryLabel={label}
+          addToCart={addToCart}
+          cartItemsCount={cartItems.length}
+        />
+      }
+    />
+  ));
+
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav cartItemsCount={cartItems.length} />
       <Routes>
         <Route
           path="/"
@@ -96,37 +126,24 @@ function App() {
                   <Card key={index} product={product} addToCart={addToCart} />
                 ))}
               </div>
-
-              {/* Carrito debajo del catálogo */}
-              <div className="mt-10 bg-white p-4 max-w-xl mx-auto rounded-lg shadow-lg">
-                <h2 className="text-xl font-bold mb-4">Carrito de compras</h2>
-                {cartItems.length === 0 ? (
-                  <p className="text-gray-500">El carrito está vacío.</p>
-                ) : (
-                  <ul className="space-y-2">
-                    {cartItems.map((item, index) => (
-                      <li key={index} className="text-left">
-                        🛒 {item.name} - ${item.price.toFixed(2)} MXN
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
             </div>
           }
         />
         <Route path="/Acerca De" element={<About />} />
         <Route path="/Contacto" element={<ContactUs />} />
+        {categoryRoutes}
         <Route
-          path="/Hombre"
-          element={<CategoryPage category="men's clothing" addToCart={addToCart} />}
-        />
-        <Route
-          path="/Mujer"
-          element={<CategoryPage category="women's clothing" addToCart={addToCart} />}
+          path="/carrito"
+          element={
+            <CartPage
+              cartItems={cartItems}
+              removeFromCart={removeFromCart}
+            />
+          }
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
