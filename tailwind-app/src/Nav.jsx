@@ -42,7 +42,9 @@ function Nav({ cartItemsCount }) {
 
         <div className="flex items-center gap-4">
           <FaSearch className="text-xl cursor-pointer text-gray-600 hover:text-black" />
-          <FaUser className="text-xl cursor-pointer text-gray-600 hover:text-black" />
+          <Link to="/login">
+            <FaUser className="text-xl cursor-pointer text-gray-600 hover:text-black" />
+          </Link>
           <Link to="/carrito" className="relative">
             <FaShoppingBag className="text-2xl text-gray-700 hover:text-black" />
             {cartItemsCount > 0 && (
