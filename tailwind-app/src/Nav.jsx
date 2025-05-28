@@ -16,7 +16,7 @@ function Nav({ cartItemsCount }) {
   return (
     <header className="bg-yellow-400 shadow-sm sticky top-0 z-50 border-b">
       <div className="bg-yellow-100 text-sm text-gray-600 px-4 py-2 flex justify-between items-center">
-        <span>Envío gratis en compras mayores a $99</span>
+        <span>Envío gratis en compras mayores a $699</span>
         <div className="flex gap-4">
           <Link to="/">Ayuda</Link>
           <Link to="/">Mi cuenta</Link>
