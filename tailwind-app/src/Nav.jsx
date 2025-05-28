@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { FaShoppingBag, FaSearch, FaUser } from "react-icons/fa";
 import reactLogo from "./assets/simp.gif";
@@ -9,12 +10,12 @@ function Nav({ cartItemsCount }) {
     { title: "Electrónica", href: "/Electrónica" },
     { title: "Joyería", href: "/Joyería" },
     { title: "Acerca De", href: "/Acerca De" },
-    { title: "Contacto", href: "/Contacto" }
+    { title: "Dudas y Comentarios", href: "/Contacto" }
   ];
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 border-b">
-      <div className="bg-gray-100 text-sm text-gray-600 px-4 py-2 flex justify-between items-center">
+    <header className="bg-yellow-400 shadow-sm sticky top-0 z-50 border-b">
+      <div className="bg-yellow-100 text-sm text-gray-600 px-4 py-2 flex justify-between items-center">
         <span>Envío gratis en compras mayores a $99</span>
         <div className="flex gap-4">
           <Link to="/">Ayuda</Link>
